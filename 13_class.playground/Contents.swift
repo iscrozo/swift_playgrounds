@@ -50,4 +50,94 @@ print(entrada2)
 
 
 print(" - - ")
-w
+
+
+protocol Mortal{
+    var muerto : Bool { get }
+    func muere()
+}
+
+class Personaje {
+    var nombre : String
+    var vida : Int
+    
+    init ( asNombre : String, aiVida : Int){
+        self.nombre  = asNombre
+        self.vida = aiVida
+    }
+}
+
+class Heroe : Personaje, Mortal{
+    var muerto: Bool{
+        return vida <= 0
+    }
+
+    func muere() {
+        print (" Animacion de muerte ")
+    }
+
+ 
+}
+
+
+// struct vs class
+// definir propiedades, metodos, subindices, inicializadores
+// clase => herencia, casting, , desinicializador, reference counting
+
+struct SomeStruct{
+    // la definicion de la estructura aqui
+}
+
+class SomeClass {
+    // la deficniion de la clase auqi
+}
+
+// cuando se trata de contenedores que no hagan muchas cosas, como un video
+struct Resolution {
+    var width = 0
+    var heigth = 0
+}
+
+class VideoMode {
+    // stored properties
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name : String?
+}
+
+let someResolution = Resolution()
+let someVideoModel = VideoMode()
+
+let vga = Resolution()
+vga.heigth
+vga.heigth
+
+
+let hd = Resolution(width: 1920, heigth: 1080)
+
+var cinema = hd
+print("\(cinema.width) x \(cinema.heigth)")
+cinema.width = 2048
+print("\(cinema.width) x \(cinema.heigth)")
+print("\(hd.width) x \(hd.heigth)")
+
+/*
+ Lazy properties => variables vagas
+ */
+// - - - -
+class DataImporter {
+    var fileName = "data.txt"
+}
+class DataManager {
+    lazy var importer = DataImporter()
+    var data = [String]()
+}
+
+let manager = DataManager()
+manager.data.append("a")
+manager.data.append("b")
+manager
+// Hasta esta linea aun no ha sido creado el importer
+manager.importer.fileName
+manager
