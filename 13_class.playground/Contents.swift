@@ -9,7 +9,7 @@ struct Agenda{
     var nombre : String
     var apellidos : String
     var telefono : Int
-    var email : String
+    var email : String!
     
     init(asNombre : String, asApellidos : String) {
         self.nombre = asNombre
@@ -18,7 +18,7 @@ struct Agenda{
         self.email = ""
     }
     
-    init(asNombre : String, asApellidos : String, aiTelefono : Int, asEmail : String) {
+    init(asNombre : String, asApellidos :String, aiTelefono : Int, asEmail : String) {
         self.nombre = asNombre
         self.apellidos = asApellidos
         self.telefono = aiTelefono
